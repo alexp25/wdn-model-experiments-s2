@@ -19,6 +19,7 @@ root_data_folder = "./data"
 # read the data from the csv file
 
 filenames = ["exp_238"]
+filenames = ["exp_243"]
 
 
 def remove_outliers(data):

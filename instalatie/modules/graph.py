@@ -136,7 +136,7 @@ def plot_timeseries_multi_sub2(timeseries_arrays: List[List[Timeseries]], title,
             y = ts.y
 
             plt.plot(x, y, label=ts.label, color=ts.color)
-            if n_sub == 1 or i > 0:
+            if n_sub == 1 or (i == (n_sub - 1)):
                 set_disp(title[i], xlabel, ylabel[i])
             else:
                 set_disp(title[i], "", ylabel[i])
