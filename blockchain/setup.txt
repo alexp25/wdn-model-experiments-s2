@@ -1,0 +1,38 @@
+All the steps are common for windows and linux except the download and extract
+
+1. Download from here and extract..
+
+https://www.multichain.com/download/multichain-windows-1.0-release.zip
+
+2. Enter the multichain program directory in the PATH
+
+3. Follow the remaining steps to create and access the chain from this link
+
+https://www.multichain.com/getting-started/
+
+The default multichain directory in windows would be C:\Users\{UserName}\AppData\Roaming\MultiChain\{chain name}
+
+
+multichain-util create chain1
+multichaind chain1 -daemon
+
+chain1@[ip-address]:[port]
+multichaind chain1@192.168.19.1:7181
+
+multichaind chain1@192.168.23.1:7181
+multichaind chain1@192.168.56.1:7181
+multichaind chain1@192.168.1.10:7181
+
+connecting to a blockchain:
+multichaind chain1@192.168.19.1:7181
+
+multichaind chain1@192.168.19.1:7181 -datadir=P:\WORKSPACE\FACULTATE\doctorat\articole\2020\ICCP\experiments\blockchain\test
+
+multichain-cli chain1 grant 1JTvSrQ6Q4n8CPCRFppvhXFMvQNS6k7oT8VegU connect
+multichain-cli chain1 grant 1JTvSrQ6Q4n8CPCRFppvhXFMvQNS6k7oT8VegU connect,send,receive
+
+{"method":"grant","params":["1JTvSrQ6Q4n8CPCRFppvhXFMvQNS6k7oT8VegU","connect"],"id":1,"chain_name":"chain1"}
+
+5dc445d702ed9920bac6b6f74b86dcc2f6e06c44774651cdcd6532c0f6874750
+
+multichaind chain1 -daemon -datadir=P:\WORKSPACE\FACULTATE\doctorat\articole\2020\ICCP\experiments\blockchain\test

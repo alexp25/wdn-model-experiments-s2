@@ -1,0 +1,167 @@
+2020-05-31 17:22:42 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2020-05-31 17:22:42 MultiChain version build 1.0 protocol 10008 (May  1 2017, 09:50:11)
+2020-05-31 17:22:42 Using OpenSSL version OpenSSL 1.0.1k 8 Jan 2015
+2020-05-31 17:22:42 Using BerkeleyDB version Berkeley DB 4.8.30: (April  9, 2010)
+2020-05-31 17:22:42 Default data directory P:\WORKSPACE\FACULTATE\doctorat\articole\2020\ICCP\experiments\blockchain\test\chain1
+2020-05-31 17:22:42 Using data directory P:\WORKSPACE\FACULTATE\doctorat\articole\2020\ICCP\experiments\blockchain\test\chain1
+2020-05-31 17:22:42 Using config file P:\WORKSPACE\FACULTATE\doctorat\articole\2020\ICCP\experiments\blockchain\test\chain1\chain1.conf
+2020-05-31 17:22:42 Using at most 125 connections (2048 file descriptors available)
+2020-05-31 17:22:42 Using 4 threads for script verification
+2020-05-31 17:22:42 Using wallet wallet.dat
+2020-05-31 17:22:42 init message: Verifying wallet...
+2020-05-31 17:22:42 CDBEnv::Open : LogDir=P:\WORKSPACE\FACULTATE\doctorat\articole\2020\ICCP\experiments\blockchain\test\chain1\database ErrorFile=P:\WORKSPACE\FACULTATE\doctorat\articole\2020\ICCP\experiments\blockchain\test\chain1\db.log
+2020-05-31 17:22:42 init message: Initializing multichain...
+2020-05-31 17:22:43 nFileVersion = 100000
+2020-05-31 17:22:43 Keys: 0 plaintext, 0 encrypted, 0 w/ metadata, 0 total
+2020-05-31 17:22:43 mchn: Default key is not found - creating new... 
+2020-05-31 17:22:43 keypool added key 1, size=1
+2020-05-31 17:22:43 keypool added key 2, size=2
+2020-05-31 17:22:43 mchn: Parameter set is not complete - starting paramset discovery thread...
+2020-05-31 17:22:43 init message: Loading addresses...
+2020-05-31 17:22:43 Loaded 0 addresses from peers.dat  0ms
+2020-05-31 17:22:43 AddLocal([fe80::e8:ea85:ec60:a7d0]:8571,1)
+2020-05-31 17:22:43 Discover: DESKTOP-U6Q7J9P - fe80::e8:ea85:ec60:a7d0
+2020-05-31 17:22:43 AddLocal([fe80::4541:58e9:6a58:5ac9]:8571,1)
+2020-05-31 17:22:43 Discover: DESKTOP-U6Q7J9P - fe80::4541:58e9:6a58:5ac9
+2020-05-31 17:22:43 AddLocal([fe80::cc4f:199e:f087:8659]:8571,1)
+2020-05-31 17:22:43 Discover: DESKTOP-U6Q7J9P - fe80::cc4f:199e:f087:8659
+2020-05-31 17:22:43 AddLocal([fe80::78d2:c451:fbc5:b516]:8571,1)
+2020-05-31 17:22:43 Discover: DESKTOP-U6Q7J9P - fe80::78d2:c451:fbc5:b516
+2020-05-31 17:22:43 AddLocal(192.168.56.1:8571,1)
+2020-05-31 17:22:43 Discover: DESKTOP-U6Q7J9P - 192.168.56.1
+2020-05-31 17:22:43 AddLocal(192.168.19.1:8571,1)
+2020-05-31 17:22:43 Discover: DESKTOP-U6Q7J9P - 192.168.19.1
+2020-05-31 17:22:43 AddLocal(192.168.23.1:8571,1)
+2020-05-31 17:22:43 Discover: DESKTOP-U6Q7J9P - 192.168.23.1
+2020-05-31 17:22:43 AddLocal(192.168.1.10:8571,1)
+2020-05-31 17:22:43 Discover: DESKTOP-U6Q7J9P - 192.168.1.10
+2020-05-31 17:22:43 dnsseed thread start
+2020-05-31 17:22:43 net thread start
+2020-05-31 17:22:43 addcon thread start
+2020-05-31 17:22:43 opencon thread start
+2020-05-31 17:22:43 msghand thread start
+2020-05-31 17:22:43 dumpaddr thread start
+2020-05-31 17:22:43 Loading addresses from DNS seeds (could take a while)
+2020-05-31 17:22:43 Seed node is set, trying to connect to 192.168.19.1:7181...
+2020-05-31 17:22:43 0 addresses found from DNS seeds
+2020-05-31 17:22:43 dnsseed thread exit
+2020-05-31 17:22:43 mchn: Connection from 1FCVq38VXJdRLy2ZWGPFriF5C6QktgsFhj received on peer=1 in verack
+2020-05-31 17:22:43 mchn: Successfully stored parameter set received from 192.168.19.1:7181
+2020-05-31 17:22:43 opencon thread interrupt
+2020-05-31 17:22:43 addcon thread interrupt
+2020-05-31 17:22:43 dumpaddr thread stop
+2020-05-31 17:22:43 net thread interrupt
+2020-05-31 17:22:43 msghand thread interrupt
+2020-05-31 17:22:43 mchn: Exited from paramset discovery thread
+2020-05-31 17:22:43 mchn: Minimal blockchain parameter set is created, default address: 1JTvSrQ6Q4n8CPCRFppvhXFMvQNS6k7oT8VegU
+2020-05-31 17:22:43 Shutdown: In progress...
+2020-05-31 17:22:43 StopNode()
+2020-05-31 17:22:43 Node stopped
+2020-05-31 17:22:43 Shutdown: done
+2020-05-31 17:24:17 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2020-05-31 17:24:17 MultiChain version build 1.0 protocol 10008 (May  1 2017, 09:50:11)
+2020-05-31 17:24:17 Using OpenSSL version OpenSSL 1.0.1k 8 Jan 2015
+2020-05-31 17:24:17 Using BerkeleyDB version Berkeley DB 4.8.30: (April  9, 2010)
+2020-05-31 17:24:17 Default data directory P:\WORKSPACE\FACULTATE\doctorat\articole\2020\ICCP\experiments\blockchain\test\chain1
+2020-05-31 17:24:17 Using data directory P:\WORKSPACE\FACULTATE\doctorat\articole\2020\ICCP\experiments\blockchain\test\chain1
+2020-05-31 17:24:17 Using config file P:\WORKSPACE\FACULTATE\doctorat\articole\2020\ICCP\experiments\blockchain\test\chain1\chain1.conf
+2020-05-31 17:24:17 Using at most 125 connections (2048 file descriptors available)
+2020-05-31 17:24:17 Using 4 threads for script verification
+2020-05-31 17:24:17 Using wallet wallet.dat
+2020-05-31 17:24:17 init message: Verifying wallet...
+2020-05-31 17:24:17 CDBEnv::Open : LogDir=P:\WORKSPACE\FACULTATE\doctorat\articole\2020\ICCP\experiments\blockchain\test\chain1\database ErrorFile=P:\WORKSPACE\FACULTATE\doctorat\articole\2020\ICCP\experiments\blockchain\test\chain1\db.log
+2020-05-31 17:24:17 init message: Initializing multichain...
+2020-05-31 17:24:17 nFileVersion = 100000
+2020-05-31 17:24:17 Keys: 2 plaintext, 0 encrypted, 2 w/ metadata, 2 total
+2020-05-31 17:24:17 mchn: Parameter set is not complete - starting paramset discovery thread...
+2020-05-31 17:24:17 init message: Loading addresses...
+2020-05-31 17:24:17 Loaded 0 addresses from peers.dat  2ms
+2020-05-31 17:24:17 AddLocal([fe80::e8:ea85:ec60:a7d0]:8571,1)
+2020-05-31 17:24:17 Discover: DESKTOP-U6Q7J9P - fe80::e8:ea85:ec60:a7d0
+2020-05-31 17:24:17 AddLocal([fe80::4541:58e9:6a58:5ac9]:8571,1)
+2020-05-31 17:24:17 Discover: DESKTOP-U6Q7J9P - fe80::4541:58e9:6a58:5ac9
+2020-05-31 17:24:17 AddLocal([fe80::cc4f:199e:f087:8659]:8571,1)
+2020-05-31 17:24:17 Discover: DESKTOP-U6Q7J9P - fe80::cc4f:199e:f087:8659
+2020-05-31 17:24:17 AddLocal([fe80::78d2:c451:fbc5:b516]:8571,1)
+2020-05-31 17:24:17 Discover: DESKTOP-U6Q7J9P - fe80::78d2:c451:fbc5:b516
+2020-05-31 17:24:17 AddLocal(192.168.56.1:8571,1)
+2020-05-31 17:24:17 Discover: DESKTOP-U6Q7J9P - 192.168.56.1
+2020-05-31 17:24:17 AddLocal(192.168.19.1:8571,1)
+2020-05-31 17:24:17 Discover: DESKTOP-U6Q7J9P - 192.168.19.1
+2020-05-31 17:24:17 AddLocal(192.168.23.1:8571,1)
+2020-05-31 17:24:17 Discover: DESKTOP-U6Q7J9P - 192.168.23.1
+2020-05-31 17:24:17 AddLocal(192.168.1.10:8571,1)
+2020-05-31 17:24:17 Discover: DESKTOP-U6Q7J9P - 192.168.1.10
+2020-05-31 17:24:17 dnsseed thread start
+2020-05-31 17:24:17 net thread start
+2020-05-31 17:24:17 addcon thread start
+2020-05-31 17:24:17 opencon thread start
+2020-05-31 17:24:17 msghand thread start
+2020-05-31 17:24:17 dumpaddr thread start
+2020-05-31 17:24:17 Loading addresses from DNS seeds (could take a while)
+2020-05-31 17:24:17 Seed node is set, trying to connect to 192.168.19.1:7181...
+2020-05-31 17:24:17 0 addresses found from DNS seeds
+2020-05-31 17:24:17 dnsseed thread exit
+2020-05-31 17:24:17 mchn: Connection from 1N3sYoFGZBrH8Zf2aLi6iWSK5H8KLe6vcQombN received on peer=1 in verack
+2020-05-31 17:24:17 mchn: Cannot find address having connect permission, trying default key
+2020-05-31 17:24:17 mchn: Connection from 1N3sYoFGZBrH8Zf2aLi6iWSK5H8KLe6vcQombN received on peer=1 in verack
+2020-05-31 17:24:17 mchn: Successfully stored parameter set received from 192.168.19.1:7181
+2020-05-31 17:24:17 opencon thread interrupt
+2020-05-31 17:24:17 dumpaddr thread stop
+2020-05-31 17:24:17 addcon thread interrupt
+2020-05-31 17:24:17 net thread interrupt
+2020-05-31 17:24:17 msghand thread interrupt
+2020-05-31 17:24:17 mchn: Exited from paramset discovery thread
+2020-05-31 17:24:17 mchn: Parameter set is valid - initializing blockchain parameters...
+2020-05-31 17:24:17 Wallet mode: 00000003
+2020-05-31 17:24:17 Node paused state is set to 00000000
+2020-05-31 17:24:17 Binding RPC on address ::1 port 7180 (IPv4+IPv6 bind any: 0)
+2020-05-31 17:24:17 Binding RPC on address 127.0.0.1 port 7180 (IPv4+IPv6 bind any: 0)
+2020-05-31 17:24:17 Unable to bind to [::]:7181 on this computer. MultiChain Core is probably already running.
+2020-05-31 17:24:17 Unable to bind to 0.0.0.0:7181 on this computer. MultiChain Core is probably already running.
+2020-05-31 17:24:17 Error: Unable to bind to 0.0.0.0:7181 on this computer. MultiChain Core is probably already running.
+2020-05-31 17:24:17 Error: Failed to listen on any port. Use -listen=0 if you want this.
+2020-05-31 17:24:17 Shutdown: In progress...
+2020-05-31 17:24:17 RPCAcceptHandler: Error: The I/O operation has been aborted because of either a thread exit or an application request
+2020-05-31 17:24:17 RPCAcceptHandler: Error: The I/O operation has been aborted because of either a thread exit or an application request
+2020-05-31 17:24:17 StopNode()
+2020-05-31 17:24:17 Node stopped
+2020-05-31 17:24:17 Shutdown: done
