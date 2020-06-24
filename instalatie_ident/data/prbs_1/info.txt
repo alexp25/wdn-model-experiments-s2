@@ -1,0 +1,4 @@
+valve sequence
+ts = 0.25
+um = 60
+du = 5
