@@ -36,16 +36,15 @@ mode = use_pump
 # skip2 = False
 # mode = use_valves
 
-# root_data_folder = "./data/prbs_2"
-# filenames = ["exp_259"]
-# title = "prbs_2"
-# skip2 = False
-# mode = use_valves
+root_data_folder = "./data/prbs_2"
+filenames = ["exp_259"]
+title = "prbs_2"
+skip2 = False
+mode = use_valves
+append_last_bookmark = True
 
 full_chart = True
 full_chart = False
-
-
 
 
 
@@ -70,11 +69,10 @@ for filename in filenames:
     # pump: 13
     data_pump, header_pump = order_data(data, header, [13])
 
-
     if mode == use_pump:
         bm_pump = extract_bookmarks(data_pump, 1)
     elif mode == use_valves:
-        bm_pump = extract_bookmarks_multitrack(data_valves)
+        bm_pump = extract_bookmarks_multitrack(data_valves, append_last_bookmark)
 
     print(bm_pump)
     bookmarks = bm_pump
@@ -83,7 +81,6 @@ for filename in filenames:
 
     if full_chart:
         bookmarks = [0, len(data_pump)-1]
-
     # quit()
 
     print(np.shape(data_valves))
@@ -102,6 +99,8 @@ for filename in filenames:
     res = run_multiple_bookmarks(data_flow, bm, get_flow_metrics_noref)
     res1 = [[e, gmean_flow] for e in res]
     flow_mean_bm = [e for e in res]
+
+    print(bookmarks)
 
     for i, b in enumerate(bookmarks):
         if i > 0:

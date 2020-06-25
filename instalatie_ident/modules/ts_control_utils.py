@@ -53,15 +53,21 @@ def run_multiple_bookmarks(data, bm, fn):
             res.append(fn(d))
     return res
 
-def extract_bookmarks_multitrack(data):
+def extract_bookmarks_multitrack(data, append_last_bookmark):
     bm = []
     prev_sample = data[0]
     s = np.shape(data)
     bm.append(0)
+    ts = 0
+
     for i in range(s[0]):
         if not np.array_equal(data[i], prev_sample):
             bm.append(i)
-            prev_sample = data[i]   
+            prev_sample = data[i]
+            
+    ts = bm[1] - bm[0]
+    if append_last_bookmark:
+        bm.append(bm[len(bm)-1] + ts)
     return bm
 
 
