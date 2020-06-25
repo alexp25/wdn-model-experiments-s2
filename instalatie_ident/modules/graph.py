@@ -117,6 +117,7 @@ def plot_xy(x, y, rads, labels, colors, title, xlabel, ylabel, scale, show_legen
 
 def plot_timeseries_multi_sub2(timeseries_arrays: List[List[Timeseries]], title, xlabel, ylabel, figsize, plot=True, id=0):
     matplotlib.style.use('default')
+    custom_grid = True
 
     if not figsize:
         # fig = plt.figure(id, figsize=(9, 16))
@@ -128,7 +129,17 @@ def plot_timeseries_multi_sub2(timeseries_arrays: List[List[Timeseries]], title,
     for (i, timeseries_array) in enumerate(timeseries_arrays):
 
         set_plot_font()
-        plt.grid()
+
+        if not custom_grid:
+            plt.grid()
+        else:
+            # Show the major grid lines with dark grey lines
+            plt.grid(b=True, which='major', color='#666666', linestyle='-', alpha=0.8)
+
+            # Show the minor grid lines with very faint and almost transparent grey lines
+            plt.minorticks_on()
+            plt.grid(b=True, which='minor', color='#999999', linestyle='-', alpha=0.2)
+        
         plt.subplot(n_sub * 100 + 11 + i)
         for ts in timeseries_array:
             x = ts.x
@@ -144,7 +155,7 @@ def plot_timeseries_multi_sub2(timeseries_arrays: List[List[Timeseries]], title,
 
     # ax.tick_params(axis = 'both', which = 'major', labelsize = FSIZE_LABEL_XS)
     # ax.tick_params(axis = 'both', which = 'minor', labelsize = FSIZE_LABEL_XS)
-
+  
     fig = plt.gcf()
 
     if plot:

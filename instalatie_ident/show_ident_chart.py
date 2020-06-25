@@ -15,13 +15,19 @@ import matplotlib.cm as cm
 from modules.ts_utils import *
 from modules.ts_control_utils import *
 
+save = True
+# save = False
 use_pump = 1
 use_valves = 2
+xy = False
+append_last_bookmark = False
+
 
 root_data_folder = "./data/cstatic"
 filenames = ["exp_246"]
 title = "static"
 skip2 = True
+xy = True
 mode = use_pump
 
 # root_data_folder = "./data/cdynamic"
@@ -36,12 +42,12 @@ mode = use_pump
 # skip2 = False
 # mode = use_valves
 
-root_data_folder = "./data/prbs_2"
-filenames = ["exp_259"]
-title = "prbs_2"
-skip2 = False
-mode = use_valves
-append_last_bookmark = True
+# root_data_folder = "./data/prbs_2"
+# filenames = ["exp_259"]
+# title = "prbs_2"
+# skip2 = False
+# mode = use_valves
+# append_last_bookmark = True
 
 full_chart = True
 full_chart = False
@@ -112,19 +118,29 @@ for filename in filenames:
             tss_flow = create_timeseries(data_flow_b, header_flow)
             tss_pump = create_timeseries(data_pump_b, header_pump)
 
-            if len(bookmarks) == 2:
-                fig, _ = graph.plot_timeseries_multi_sub2([tss_valves, tss_flow, tss_pump], [
-                                                        "valve sequence", "sensor output", "pump output"], "samples [x0.1s]", ["model", "flow [L/h]", "pump [%]"], (16,16), False, i)
+            if xy:
+                data_flow_b = data_flow_b[:-50]
+                data_pump_b = data_pump_b[:-50]
+                tss_xy = create_timeseries(data_flow_b, header_pump, data_pump_b)
+                fig, _ = graph.plot_timeseries_multi_sub2([tss_xy], ["sensor output", "pump output"], "samples [x0.1s]", ["flow [L/h]", "pump [%]"], (16,16), not save, i)
             else:
-                fig, _ = graph.plot_timeseries_multi_sub2([tss_flow, tss_pump], ["sensor output", "pump output"], "samples [x0.1s]", ["flow [L/h]", "pump [%]"], (16,16), False, i)
+                if len(bookmarks) == 2:
+                    fig, _ = graph.plot_timeseries_multi_sub2([tss_valves, tss_flow, tss_pump], [
+                                                            "valve sequence", "sensor output", "pump output"], "samples [x0.1s]", ["model", "flow [L/h]", "pump [%]"], (16,16), not save, i)
+                else:
+                    fig, _ = graph.plot_timeseries_multi_sub2([tss_flow, tss_pump], ["sensor output", "pump output"], "samples [x0.1s]", ["flow [L/h]", "pump [%]"], (16,16), not save, i)
 
-
-            if len(bookmarks) == 2:
-                graph.save_figure(fig, "./figs/ident_" + title + "_" + filename + "_full")
-                loader.save_csv(data_flow_b, "./data/output/ident_flow_" + title + "_" + filename + "_full.csv")
-                loader.save_csv(data_pump_b, "./data/output/ident_pump_" + title + "_" + filename + "_full.csv")
-            else:
-                if i%2==1 or not skip2:
-                    graph.save_figure(fig, "./figs/ident_" + title + "_" + filename + "_" + str(i))
-                    loader.save_csv(data_flow_b, "./data/output/ident_flow_" + title + "_" + filename + "_" + str(i) + ".csv")
-                    loader.save_csv(data_pump_b, "./data/output/ident_pump_" + title + "_" + filename + "_" + str(i) + ".csv")
+            app1 = ""
+            if xy:
+                app1 = "_xy"
+            
+            if save:
+                if len(bookmarks) == 2:
+                    graph.save_figure(fig, "./figs/ident_" + title + "_" + filename + app1 + "_full")
+                    loader.save_csv(data_flow_b, "./data/output/ident_flow_" + title + "_" + filename + app1 + "_full.csv")
+                    loader.save_csv(data_pump_b, "./data/output/ident_pump_" + title + "_" + filename + app1 + "_full.csv")
+                else:
+                    if i%2 == 1 or not skip2:
+                        graph.save_figure(fig, "./figs/ident_" + title + "_" + filename + app1 + "_" + str(i))
+                        loader.save_csv(data_flow_b, "./data/output/ident_flow_" + title + "_" + filename + app1 + "_" + str(i) + ".csv")
+                        loader.save_csv(data_pump_b, "./data/output/ident_pump_" + title + "_" + filename + app1 + "_" + str(i) + ".csv")
