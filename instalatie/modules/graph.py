@@ -129,8 +129,9 @@ def plot_timeseries_multi_sub2(timeseries_arrays: List[List[Timeseries]], title,
     for (i, timeseries_array) in enumerate(timeseries_arrays):
 
         set_plot_font()
-        plt.grid()
+
         plt.subplot(n_sub * 100 + 11 + i)
+        plt.grid()
         for ts in timeseries_array:
             x = ts.x
             y = ts.y
