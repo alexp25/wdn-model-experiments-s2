@@ -14,28 +14,41 @@ import matplotlib.cm as cm
 
 
 root_data_folder = "./data"
-# root_data_folder += "/mmc_eval/mmc"
+root_data_folder += "/mmc_eval/mmc"
+filenames = ["exp_397"]
+title = "MMC"
+
+# root_data_folder = "./data"
 # root_data_folder += "/mmc_eval/mmc_weights"
+# filenames = ["exp_399"]
+# title = "MMC-W"
+
+# root_data_folder = "./data"
 # root_data_folder += "/mmc_eval/mmc_ai"
+# filenames = ["exp_400"]
+# title = "MMC AI"
+
+# root_data_folder = "./data"
 # root_data_folder += "/mmc_eval/mmc_ai_weights"
-root_data_folder += "/mmc_eval/single"
-# read the data from the csv file
+# filenames = ["exp_401"]
+# title = "MMC-W AI"
 
-filenames = ["exp_238"]
-filenames = ["exp_243"]
-filenames = ["exp_245"]
-filenames = ["exp_393"]
-filenames = ["exp_394"]
-filenames = ["exp_382"]
-# filenames = ["exp_380"]
-filenames = ["exp_395"]
-# filenames = ["exp_393"]
+# root_data_folder = "./data"
+# root_data_folder += "/mmc_eval/single"
+# filenames = ["exp_402"]
+# title = "PID M0"
 
-# title = "MMC"
+# root_data_folder = "./data"
+# root_data_folder += "/mmc_eval/single"
+# filenames = ["exp_405"]
+# title = "PID M7"
+
+
+
 # title = "MMC AI"
 # title = "MMC-W"
 # title = "MMC-W AI"
-title = "PID"
+# title = "PID"
 
 bookmarks = [188, 282, 375, 469, 563, 657]
 bookmarks = []
@@ -48,6 +61,7 @@ frame_size = 8
 start_index_bm = 1
 stop_index_bm = start_index_bm + frame_size
 
+# start_index_bm = 0
 # stop_index_bm = None
 
 
