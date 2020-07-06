@@ -14,9 +14,13 @@ import matplotlib.cm as cm
 
 
 root_data_folder = "./data"
-root_data_folder += "/mmc_eval/mmc"
-filenames = ["exp_397"]
-title = "MMC"
+filenames = ["exp_245"]
+title = "PID"
+
+# root_data_folder = "./data"
+# root_data_folder += "/mmc_eval/mmc"
+# filenames = ["exp_397"]
+# title = "MMC"
 
 # root_data_folder = "./data"
 # root_data_folder += "/mmc_eval/mmc_weights"
@@ -44,7 +48,6 @@ title = "MMC"
 # title = "PID M7"
 
 
-
 # title = "MMC AI"
 # title = "MMC-W"
 # title = "MMC-W AI"
@@ -61,8 +64,11 @@ frame_size = 8
 start_index_bm = 1
 stop_index_bm = start_index_bm + frame_size
 
-# start_index_bm = 0
-# stop_index_bm = None
+start_index_bm = 0
+stop_index_bm = None
+
+start_index_override = 5000
+stop_index_override = 12500
 
 
 def remove_outliers(data, maxval):
@@ -73,7 +79,7 @@ def remove_outliers(data, maxval):
     for j in range(cols):
         for i in range(rows):
             if i > 1:
-                if data[i][j] > maxval:
+                if data[i][j] - data[i-1][j] > maxval:
                     data[i][j] = data[i-1][j]
 
     return data
@@ -134,6 +140,7 @@ def create_timeseries(data, header):
 
     return tss
 
+
 def trim_ts(tss: List[Timeseries], start, n):
     for ts in tss:
         ts.x = ts.x[start:n]
@@ -175,21 +182,23 @@ def split_data_bookmarks(data):
             i1 = i
     return bookmarks
 
+
 def split_data_bookmarks_2d(data):
     bookmarks = []
     s = np.shape(data)
     n_rows = s[0]
     n_cols = s[1]
-    b1 = data[0,:]
+    b1 = data[0, :]
     i1 = 0
     for i in range(n_rows):
-        if not np.array_equal(b1, data[i,:]) and i > 0:
-            b1 = data[i-1,:]
+        if not np.array_equal(b1, data[i, :]) and i > 0:
+            b1 = data[i-1, :]
             i2 = i - 1
             if i1 != i2:
                 bookmarks.append([i1, i2])
             i1 = i
     return bookmarks
+
 
 def run_multiple_bookmarks(data, bm, fn):
     res = []
@@ -197,6 +206,7 @@ def run_multiple_bookmarks(data, bm, fn):
         d = data[b[0]:b[1]]
         res.append(fn(d))
     return res
+
 
 # create separate models for each data file
 for filename in filenames:
@@ -231,13 +241,12 @@ for filename in filenames:
     # tss = create_timeseries(np.concatenate((x,y), axis=1), np.concatenate((xheader,yheader)))
 
     # data_valves = remove_outliers(data_valves, 100)
-    # data_flow = remove_outliers(data_flow, 300)
+    data_flow = remove_outliers(data_flow, 300)
 
     tss1 = create_timeseries(data_valves, header_valves)
     tss2 = create_timeseries(data_flow, header_flow)
     tss3 = create_timeseries(data_pump, header_pump)
 
-    
     # print(json.dumps(acc, indent=2))
 
     # fig, _ = graph.plot_timeseries_multi(tss, "valve sequence", "samples [x0.1s]", "position [%]", False)
@@ -261,7 +270,11 @@ for filename in filenames:
 
     start_index = bm[start_index_bm][1]
 
-    
+    if start_index_override is not None:
+        start_index = start_index_override
+    if stop_index_override is not None:
+        stop_index = stop_index_override
+
     res = run_multiple_bookmarks(data_flow, bm, get_flow_metrics)
 
     flow_mean_bm = [e[0] for e in res]
@@ -276,7 +289,6 @@ for filename in filenames:
     res1 = [[e[0], gmean_flow_bm] for e in res]
     print(res1)
 
-    
     print(flow_min_bm)
     print(flow_max_bm)
     print(gmean_flow_bm)
@@ -288,7 +300,8 @@ for filename in filenames:
     print(abs(flow_max_bm - gmean_flow)/gmean_flow * 100)
     print(abs(flow_min_bm - gmean_flow)/gmean_flow * 100)
 
-    gstdev_flow_bm = np.mean([e[1] for e in res[start_index_bm: stop_index_bm]])
+    gstdev_flow_bm = np.mean(
+        [e[1] for e in res[start_index_bm: stop_index_bm]])
 
     header_aux = ["crt", "mean: " + "%0.1f" % gmean_flow_bm]
 
@@ -300,7 +313,8 @@ for filename in filenames:
 
     res = run_multiple_bookmarks(data_pump, bm, get_control_metrics)
 
-    gstdev_pump_bm = np.mean([e[1] for e in res[start_index_bm: stop_index_bm]])
+    gstdev_pump_bm = np.mean(
+        [e[1] for e in res[start_index_bm: stop_index_bm]])
     gmean_pump_bm = np.mean([e[0] for e in res[start_index_bm: stop_index_bm]])
     print(gstdev_pump_bm)
 
@@ -317,22 +331,17 @@ for filename in filenames:
     print(np.shape(data_flow))
     print(np.shape(res1))
 
-
     # head = ["", "", "", ""]
     # axhead = ["yk (avg)", "yk (stdev)", "uk (avg)", "uk (stdev)"]
     # fig, _ = graph.plot_timeseries_multi_sub2([tss4, tss5, tss6, tss7], head, "samples [x0.1s]", axhead)
-
 
     # quit()
 
     # fig, _ = graph.plot_timeseries_multi_sub2([tss1, tss2, tss3], [
     #                                         "valve sequence", "sensor output", "pump output"], "samples [x0.1s]", ["model", "flow [L/h]", "pump [%]"], (16,16))
 
-
-   
     # fig, _ = graph.plot_timeseries_multi_sub2([tss1, tss2, tss3, tss4, tss5], [
     #                                           "valve sequence", "sensor output", "pump output", "mean", "stdev"], "samples [x0.1s]", ["model", "flow [L/h]", "pump [%]", "mean [L/h]", "stdev"], (16,16))
-
 
     trim_ts(tss1, start_index, stop_index)
     trim_ts(tss2, start_index, stop_index)
@@ -344,17 +353,22 @@ for filename in filenames:
 
     head = ["control metrics (" + title + ")", "", "", "", "", "", ""]
     axhead = ["valve sequence", "flow [L/h]", "pump [%]"]
-    fig, _ = graph.plot_timeseries_multi_sub2([tss1, tss2, tss3], head, "sample [x0.1 s]", axhead, (16,16))
+    fig, _ = graph.plot_timeseries_multi_sub2(
+        [tss1, tss2, tss3], head, "sample [x0.1 s]", axhead, (16, 16))
     graph.save_figure(fig, "./figs/control_" + filename)
 
     if show_extra:
-        head = ["control metrics (" + title + " - local averages)", "", "", "", "", "", ""]
-        axhead = ["valve sequence", "sensor output", "pump output", "flow [L/h]", "stdev [L/h]", "pump [%]", "stdev [%]"]
-        fig, _ = graph.plot_timeseries_multi_sub2([tss1, tss2, tss3, tss4, tss5, tss6, tss7], head, "sequence step", axhead, (16,16))
+        head = [
+            "control metrics (" + title + " - local averages)", "", "", "", "", "", ""]
+        axhead = ["valve sequence", "sensor output", "pump output",
+                  "flow [L/h]", "stdev [L/h]", "pump [%]", "stdev [%]"]
+        fig, _ = graph.plot_timeseries_multi_sub2(
+            [tss1, tss2, tss3, tss4, tss5, tss6, tss7], head, "sequence step", axhead, (16, 16))
     else:
         head = ["control metrics (" + title + " - local averages)", "", "", ""]
         axhead = ["flow [L/h]", "stdev [L/h]", "pump [%]", "stdev [%]"]
-        fig, _ = graph.plot_timeseries_multi_sub2([tss4, tss5, tss6, tss7], head, "sequence step", axhead, (16,16))
+        fig, _ = graph.plot_timeseries_multi_sub2(
+            [tss4, tss5, tss6, tss7], head, "sequence step", axhead, (16, 16))
 
     graph.save_figure(fig, "./figs/control_metrics_" + filename)
 
