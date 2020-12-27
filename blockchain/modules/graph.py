@@ -19,10 +19,16 @@ from colour import Color
 # FSIZE_LABEL_XS = 12
 
 
-FSIZE_TITLE = 16
-FSIZE_LABEL = 14
-FSIZE_LABEL_S = 14
-FSIZE_LABEL_XS = 12
+# FSIZE_TITLE = 16
+# FSIZE_LABEL = 14
+# FSIZE_LABEL_S = 14
+# FSIZE_LABEL_XS = 12
+# OPACITY = 0.9
+
+FSIZE_TITLE = 18
+FSIZE_LABEL = 18
+FSIZE_LABEL_S = 16
+FSIZE_LABEL_XS = 14
 OPACITY = 0.9
 
 
@@ -75,13 +81,13 @@ def plot_timeseries_multi_sub2(timeseries_arrays: List[List[Timeseries]], title,
             x = ts.x
             y = ts.y
 
-            plt.plot(x, y, label=ts.label, color=ts.color)
+            plt.plot(x, y, label=ts.label, color=ts.color, linewidth=3)
             if n_sub == 1 or (i == (n_sub - 1)):
                 set_disp(title[i], xlabel, ylabel[i])
             else:
                 set_disp(title[i], "", ylabel[i])
             
-            plt.legend()
+            plt.legend(fontsize=FSIZE_LABEL_S)
 
     # ax.tick_params(axis = 'both', which = 'major', labelsize = FSIZE_LABEL_XS)
     # ax.tick_params(axis = 'both', which = 'minor', labelsize = FSIZE_LABEL_XS)
@@ -108,9 +114,9 @@ def plot_timeseries_multi(id, timeseries_array: List[Timeseries], title, xlabel,
     for ts in timeseries_array:
         x = ts.x
         y = ts.y
-        plt.plot(x, y, label=ts.label, color=ts.color)       
+        plt.plot(x, y, label=ts.label, color=ts.color, linewidth=3)       
         set_disp(title, xlabel, ylabel)   
-        plt.legend()
+        plt.legend(fontsize=FSIZE_LABEL_S)
 
     # ax.tick_params(axis = 'both', which = 'major', labelsize = FSIZE_LABEL_XS)
     # ax.tick_params(axis = 'both', which = 'minor', labelsize = FSIZE_LABEL_XS)
@@ -153,7 +159,7 @@ def stem_timeseries_multi(timeseries_array: List[Timeseries], title, xlabel, yla
 
     set_disp(title, xlabel, ylabel)
 
-    plt.legend()
+    plt.legend(fontsize=FSIZE_LABEL_S)
     fig = plt.gcf()
 
     plt.show()
@@ -185,7 +191,7 @@ def plot_timeseries(id, timeseries: Timeseries, title, xlabel, ylabel, scale=Non
     else:
         fig = plt.figure(id, figsize=figsize)
 
-    plt.plot(timeseries.x, timeseries.y)
+    plt.plot(timeseries.x, timeseries.y, linewidth=3)
     set_disp(title, xlabel, ylabel)
 
     ax = plt.gca()
@@ -200,7 +206,7 @@ def plot_timeseries(id, timeseries: Timeseries, title, xlabel, ylabel, scale=Non
 
     plt.grid()
 
-    plt.legend()
+    plt.legend(fontsize=FSIZE_LABEL_S)
 
     fig = plt.gcf()
 
@@ -346,7 +352,7 @@ def plot_barchart_multi_core(bss: List[Barseries], xlabel, ylabel, title, xlabel
     if not legend_loc:
         legend_loc = "upper left"
 
-    plt.legend(loc=legend_loc, fontsize=FSIZE_LABEL_XS)
+    plt.legend(loc=legend_loc, fontsize=FSIZE_LABEL_S)
 
     ax.grid(zorder=0)
 

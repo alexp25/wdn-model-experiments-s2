@@ -23,12 +23,18 @@ import operator
 root_data_folder = "./"
 # read the data from the csv file
 
-filenames = ["d1", "d2"]
-titles = ["Add new block time", "Get row by id time"]
-scales = [None, (None, (2000,2200))]
+# filenames = ["d1", "d2"]
+# titles = ["Add new block time", "Get row by id time"]
+# scales = [None, (None, (2000,2200))]
+
+filenames = ["d3", "d4", "d3_1", "d4_1"]
+titles = ["Write average latency", "Batch write average latency", "Read average latency", "Batch read average latency"]
+scales = [None, None, None, None]
 
 # filenames = ["d2"]
 # titles = ["Get row by id time"]
+
+add_mean = False
 
 def fit_model(x, y, degree):
     # create the polynomal features to be used for training the regression model
@@ -128,9 +134,11 @@ for i, filename in enumerate(filenames):
     x_poly, y_poly_pred, rmse, r2 = fit_model(x, y, 0)
 
     tss_xy = create_timeseries(y, ["data"], x)
-    tss_xy_poly = create_timeseries(y_poly_pred, ["mean: " + str(int(y_poly_pred[0]))], x)
-
-    tss_xy_poly[0].color = "orange"
+    plot_tss = [tss_xy[0]]
+    if add_mean:
+        tss_xy_poly = create_timeseries(y_poly_pred, ["mean: " + str(int(y_poly_pred[0]))], x)
+        tss_xy_poly[0].color = "orange"
+        plot_tss.append(tss_xy_poly[0])
     
-    fig, _ = graph.plot_timeseries_multi(i, [tss_xy[0], tss_xy_poly[0]], titles[i], xheader[0], yheader[0], scales[i], (10, 8))
+    fig, _ = graph.plot_timeseries_multi(i, plot_tss, titles[i], xheader[0], yheader[0], scales[i], (10, 8))
     graph.save_figure(fig, titles[i])
